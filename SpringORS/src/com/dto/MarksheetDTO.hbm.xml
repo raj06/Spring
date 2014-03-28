@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.dto">
+<class name="MarksheetDTO" table="marksheet" >
+<id name="id">
+<generator class="increment"></generator>
+</id>
+<property name="rollno"></property>
+<property name="name"></property>
+<property name="physics"></property>
+<property name="chemistry"></property>
+<property name="maths"></property>
+</class>
+</hibernate-mapping>

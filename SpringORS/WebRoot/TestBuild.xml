@@ -1,0 +1,84 @@
+<project name="SpringORS" default="build" basedir="H:/War">
+
+	<description>
+        simple example build file
+    </description>
+	<!-- set global properties for this build -->
+
+	<property name="source" location="./SpringORS/src" />
+	<property name="websource" location="./SpringORS/WebRoot" />
+	<property name="target" location="./build/SpringORS/WebRoot/WEB-INF/classes" />
+	<property name="targetLib" location="./build/SpringORS/WebRoot/WEB-INF/lib" />
+	<property name="buildDir" location="./build" />
+	<property name="libDir" location="./SpringORS/WebRoot/WEB-INF/lib" />
+	<property name="tomcatLib" location="H:/Java Tools/server/apache-tomcat-7.0.42-windows-x86/apache-tomcat-7.0.42/lib" />
+
+	<target name="info">
+
+		<echo message="source :${source} " />
+		<echo message="target :${target} " />
+		<echo message="buildDir :${buildDir} " />
+		<echo message="websource :${websource} " />
+		<echo message="libDir :${libDir} " />
+		<echo message="targetLib :${targetLib} " />
+		<echo message="tomcatLib :${tomcatLib} " />
+
+	</target>
+
+
+
+	<target name="copy">
+
+		<mkdir dir="${buildDir}" />
+		<mkdir dir="${target}" />
+		<mkdir dir="${targetLib}" />
+
+
+		<copy todir="${buildDir}/SpringORS">
+			<fileset dir="${websource}" />
+		</copy>
+
+		<copy todir="${targetLib}">
+			<fileset dir="${libDir}" />
+		</copy>
+
+
+	</target>
+
+	<target name="compile" description="compile the source ">
+		<javac srcdir="${source}" destdir="${target}">
+			<classpath>
+				<fileset dir="${libDir}">
+					<include name="**/*.jar" />
+				</fileset>
+				<fileset dir="${tomcatLib}">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="createWar">
+
+		<war destfile="${buildDir}/SpringORS.war" basedir="${websource}" webxml="${websource}/WEB-INF/web.xml" />
+		<!--
+		<copy todir="H:/Java Tools/server/apache-tomcat-7.0.42-windows-x86/apache-tomcat-7.0.42/webapps">
+
+			<fileset dir="${target}">
+				<include name="spring.war" />
+			</fileset>
+		</copy>
+-->
+	</target>
+
+	<target name="clean" description="clean up">
+		<delete dir="${buildDir}" />
+	</target>
+
+	<target name="build" depends="info,clean,copy,createWar" description="BuildTest">
+
+	</target>
+
+
+
+</project>

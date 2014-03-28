@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation"
+		value="false">
+	</constant>
+	<constant name="struts.devMode" value="false"></constant>
+	<package name="default" extends="tiles-default,jasperreports-default">
+		<interceptors>
+			<interceptor name="FrontCTL"
+				class="com.interceptor.FrontCTL">
+			</interceptor>
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="FrontCTL"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<global-results>
+			<result name="logout">Login.jsp</result>
+		</global-results>
+		<action name="Marksheet" class="MarksheetActionBean">
+			<interceptor-ref name="myStack"></interceptor-ref>
+			<result name="add" type="tiles">page.marksheet</result>
+			<result name="update" type="tiles">page.marksheet</result>
+			<result name="get" type="tiles">page.marksheet</result>
+			<result name="success" type="tiles">page.marksheet</result>
+		</action>
+		<action name="MarksheetList" class="MarksheetListActionBean">
+			<interceptor-ref name="myStack"></interceptor-ref>
+			<result name="list" type="tiles">page.marksheetList</result>
+			<result name="delete" type="tiles">
+				page.marksheetList
+			</result>
+			<result name="search" type="tiles">
+				page.marksheetList
+			</result>
+		</action>
+		<action name="Registration" class="RegistrationActionBean">
+			<result name="success" type="tiles">page.reg</result>
+			<result name="register" type="tiles">page.marksheet</result>
+			<result name="already" type="tiles">page.reg</result>
+			<result name="input" type="tiles">page.reg</result>
+		</action>
+		<action name="Login" class="LoginActionBean">
+			<result name="success" type="tiles">page.login</result>
+			<result name="login" type="tiles">page.marksheet</result>
+			<result name="input" type="tiles">page.login</result>
+
+		</action>
+		<action name="Logout" class="LogoutActionBean">
+			<result name="success" type="tiles">page.login</result>
+			<result name="logout" type="tiles">page.login</result>
+		</action>
+
+		<action name="Jas" class="JasperActionBean">
+
+			<result name="success" type="jasper">
+				<param name="location">/jasper/${jasperfileName}</param>
+				<param name="dataSource">myList</param>
+				<param name="format">${format}</param>
+				<param name="contentType">${contentType}</param>
+				<param name="contentDisposition">
+					filename=${fileName}
+				</param>
+			</result>
+		</action>
+	</package>
+</struts>

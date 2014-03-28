@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="BaseLayout" template="/Layout.jsp">
+		<put-attribute name="header" value="/Header.jsp" />
+		<put-attribute name="footer" value="/Footer.jsp" />
+		<put-attribute name="menu" value="/Menu.jsp" />
+	</definition>
+	<definition name="page.login" extends="BaseLayout">
+		<put-attribute name="title" value="Login Form" />
+		<put-attribute name="body" value="/Login.jsp" />
+	</definition>
+	<definition name="page.marksheet" extends="BaseLayout">
+		<put-attribute name="title" value="Marksheet Form" />
+		<put-attribute name="body" value="/Marksheet.jsp" />
+	</definition>
+	<definition name="page.marksheetList" extends="BaseLayout">
+		<put-attribute name="title" value="MarksheetList Form" />
+		<put-attribute name="body" value="/MarksheetList.jsp" />
+	</definition>
+	<definition name="page.reg" extends="BaseLayout">
+		<put-attribute name="title" value="Registration Form" />
+		<put-attribute name="body" value="/Registration.jsp" />
+	</definition>
+</tiles-definitions>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.devMode" value="false" />
+
+	<package name="default" namespace="/" extends="jasperreports-default">
+	
+    <action name="Jas" class="com.action.JasperAction">
+        <result name="success" type="jasper">
+            <param name="location">/jasper/${jasperfileName}</param>
+            <param name="dataSource">myList</param>
+            <param name="format">${format}</param>
+            <param name="contentType">${contentType}</param>
+            <param name="contentDisposition">filename=${fileName}</param>
+        </result>
+    </action>
+   </package>
+</struts>

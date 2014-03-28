@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+"-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+"http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="userid">
+		<field-validator type="required">
+			<message>User Id Required</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="minLength">4</param>
+			<param name="maxLength">10</param>
+			<message>
+				Login id Must required min 4 and max 10 digits
+			</message>
+		</field-validator>
+	</field>
+</validators>
